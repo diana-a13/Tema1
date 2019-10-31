@@ -1,15 +1,25 @@
 function distance(first, second){
 	//TODO: implementați funcția
 	// TODO: implement the function
-
-	var c1 = Object.keys(first).length;
-	var c2 = Object.keys(second).length;
-
+	
 	if(!(first instanceof Array) || !(second instanceof Array))
-		{
-			throw new Error("InvalidType");
-		}
-		
+	{
+		throw new Error("InvalidType");
+	}
+	
+	var f = first.reduce(function(a,b){
+		if(a.indexOf(b)<0)a.push(b);
+		return a;
+	},[]);
+	
+	var s = second.reduce(function(c,d){
+		if(c.indexOf(d)<0)c.push(d);
+		return c;
+	},[]);
+	
+	var c1 = Object.keys(f).length;
+	var c2 = Object.keys(s).length;
+
 	if(c1>c2)
 		return c1-c2;
 	else
